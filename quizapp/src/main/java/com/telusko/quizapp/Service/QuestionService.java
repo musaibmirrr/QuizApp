@@ -1,7 +1,7 @@
 package com.telusko.quizapp.Service;
 
-import com.telusko.quizapp.Dto.QuestionRequestDTO;
-import com.telusko.quizapp.Dto.QuestionResponseDTO;
+import com.telusko.quizapp.Dto.QuestionDTO.QuestionRequestDTO;
+import com.telusko.quizapp.Dto.QuestionDTO.QuestionResponseDTO;
 import com.telusko.quizapp.Model.Question;
 import com.telusko.quizapp.Repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;

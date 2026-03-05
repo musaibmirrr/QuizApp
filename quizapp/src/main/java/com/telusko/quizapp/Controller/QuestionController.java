@@ -1,11 +1,10 @@
 package com.telusko.quizapp.Controller;
 
-import com.telusko.quizapp.Dto.QuestionRequestDTO;
-import com.telusko.quizapp.Dto.QuestionResponseDTO;
+import com.telusko.quizapp.Dto.QuestionDTO.QuestionRequestDTO;
+import com.telusko.quizapp.Dto.QuestionDTO.QuestionResponseDTO;
 import com.telusko.quizapp.Model.Question;
 import com.telusko.quizapp.Service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
