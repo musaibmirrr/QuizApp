@@ -52,4 +52,39 @@ public class QuestionService {
 
         return response;
     }
+
+    public QuestionResponseDTO updateQuestion(Integer id, QuestionRequestDTO dto) {
+
+        Question question = questionRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Question not found"));
+
+        question.setQuestionTitle(dto.getQuestionTitle());
+        question.setOption1(dto.getOption1());
+        question.setOption2(dto.getOption2());
+        question.setOption3(dto.getOption3());
+        question.setOption4(dto.getOption4());
+        question.setRightAnswer(dto.getRightAnswer());
+        question.setDifficultylevel(dto.getDifficultylevel());
+        question.setCategory(dto.getCategory());
+
+        Question saved = questionRepository.save(question);
+
+        QuestionResponseDTO response = new QuestionResponseDTO();
+        response.setId(saved.getId());
+        response.setQuestionTitle(saved.getQuestionTitle());
+        response.setOption1(saved.getOption1());
+        response.setOption2(saved.getOption2());
+        response.setOption3(saved.getOption3());
+        response.setOption4(saved.getOption4());
+        response.setDifficultylevel(saved.getDifficultylevel());
+        response.setCategory(saved.getCategory());
+
+        return response;
+    }
+
+    public String deleteQuestion(Integer id) {
+        questionRepository.deleteById(id);
+        return "DELETED";
+    }
+
 }
