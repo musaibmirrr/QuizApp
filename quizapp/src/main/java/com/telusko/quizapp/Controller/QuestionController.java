@@ -19,31 +19,27 @@ public class QuestionController {
     private QuestionService questionService;
 
     @GetMapping("allquestions")
-    public List<Question> getAllQuestions() {
+    public ResponseEntity<List<Question>> getAllQuestions() {
         return questionService.getAllQuestions();
     }
 
     @GetMapping("category/{category}")
-    public List<Question> getAllQuestionsByCategory(@PathVariable String category) {
+    public ResponseEntity<List<Question>> getAllQuestionsByCategory(@PathVariable String category) {
         return questionService.getQuestionsByCategory(category);
     }
 
     @PostMapping("addquestion")
     public ResponseEntity<QuestionResponseDTO> addQuestion(@RequestBody QuestionRequestDTO question) {
-    QuestionResponseDTO savedQuestion = questionService.addQuestion(question);
-    return  ResponseEntity.status(HttpStatus.CREATED).body(savedQuestion);
+        return questionService.addQuestion(question);
     }
 
     @PutMapping("updatequestion/{id}")
     public ResponseEntity<QuestionResponseDTO> updateQuestion(@PathVariable Integer id, @RequestBody QuestionRequestDTO question) {
-        QuestionResponseDTO updated = questionService.updateQuestion(id, question);
-
-        return ResponseEntity.ok(updated);
+        return questionService.updateQuestion(id, question);
     }
 
     @DeleteMapping("deletequestion/{id}")
     public ResponseEntity<String> deleteQuestion(@PathVariable Integer id) {
-        String deletedQuestion = questionService.deleteQuestion(id);
-        return  ResponseEntity.ok(deletedQuestion);
+        return questionService.deleteQuestion(id);
     }
 }
